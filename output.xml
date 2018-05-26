@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180517 15:41:25.505" generator="Robot 3.0.3 (Python 2.7.13 on win32)">
+<suite source="E:\myworkstation\myspace\auto_test\NTGJAPI" id="s1" name="NTGJAPI">
+<suite source="E:\myworkstation\myspace\auto_test\NTGJAPI\FeiShouDuan" id="s1-s1" name="FeiShouDuan">
+<suite source="E:\myworkstation\myspace\auto_test\NTGJAPI\FeiShouDuan\01_FeiShouDuan_Login.txt" id="s1-s1-s1" name="01 FeiShouDuan Login">
+<test id="s1-s1-s1-t1" name="01_errorpassword">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>步骤1:FSD login error password</arg>
+</arguments>
+<msg timestamp="20180517 15:41:25.722" level="INFO">步骤1:FSD login error password</msg>
+<status status="PASS" endtime="20180517 15:41:25.723" starttime="20180517 15:41:25.722"></status>
+</kw>
+<kw name="Fsd Api Login">
+<arguments>
+<arg>14110428596</arg>
+<arg>&amp;{testdata_001_FSD_account_002}</arg>
+</arguments>
+<assign>
+<var>${userinfo}</var>
+</assign>
+<msg timestamp="20180517 15:41:25.728" level="FAIL">No keyword with name 'Fsd Api Login' found.</msg>
+<status status="FAIL" endtime="20180517 15:41:25.728" starttime="20180517 15:41:25.728"></status>
+</kw>
+<tags>
+<tag>add</tag>
+</tags>
+<status status="FAIL" endtime="20180517 15:41:25.729" critical="yes" starttime="20180517 15:41:25.720">No keyword with name 'Fsd Api Login' found.</status>
+</test>
+<test id="s1-s1-s1-t2" name="02_login">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>步骤1:FSD login</arg>
+</arguments>
+<msg timestamp="20180517 15:41:25.743" level="INFO">步骤1:FSD login</msg>
+<status status="PASS" endtime="20180517 15:41:25.743" starttime="20180517 15:41:25.742"></status>
+</kw>
+<kw name="Fsd Api Login">
+<arguments>
+<arg>19900001001</arg>
+<arg>&amp;{testdata_001_FSD_account_003}</arg>
+</arguments>
+<assign>
+<var>@{userinfo}</var>
+</assign>
+<msg timestamp="20180517 15:41:25.747" level="FAIL">No keyword with name 'Fsd Api Login' found.</msg>
+<status status="FAIL" endtime="20180517 15:41:25.748" starttime="20180517 15:41:25.747"></status>
+</kw>
+<status status="FAIL" endtime="20180517 15:41:25.748" critical="yes" starttime="20180517 15:41:25.740">No keyword with name 'Fsd Api Login' found.</status>
+</test>
+<test id="s1-s1-s1-t3" name="03_mobilenumber_non-exist">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>步骤1: mobile number non-exist</arg>
+</arguments>
+<msg timestamp="20180517 15:41:25.759" level="INFO">步骤1: mobile number non-exist</msg>
+<status status="PASS" endtime="20180517 15:41:25.759" starttime="20180517 15:41:25.759"></status>
+</kw>
+<kw name="Fsd Check Account">
+<arguments>
+<arg>&amp;{testdata_001_FSD_check_account_002}</arg>
+</arguments>
+<assign>
+<var>${userinfo}</var>
+</assign>
+<msg timestamp="20180517 15:41:25.764" level="FAIL">No keyword with name 'Fsd Check Account' found.</msg>
+<status status="FAIL" endtime="20180517 15:41:25.764" starttime="20180517 15:41:25.764"></status>
+</kw>
+<status status="FAIL" endtime="20180517 15:41:25.765" critical="yes" starttime="20180517 15:41:25.757">No keyword with name 'Fsd Check Account' found.</status>
+</test>
+<test id="s1-s1-s1-t4" name="04_Freeze_Account_Login">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>步骤1:Ramdom Phone Number</arg>
+</arguments>
+<msg timestamp="20180517 15:41:25.778" level="INFO">步骤1:Ramdom Phone Number</msg>
+<status status="PASS" endtime="20180517 15:41:25.778" starttime="20180517 15:41:25.778"></status>
+</kw>
+<kw name="Ramdom Phone Number">
+<assign>
+<var>${phonenumber}</var>
+</assign>
+<msg timestamp="20180517 15:41:25.784" level="FAIL">No keyword with name 'Ramdom Phone Number' found.</msg>
+<status status="FAIL" endtime="20180517 15:41:25.784" starttime="20180517 15:41:25.784"></status>
+</kw>
+<status status="FAIL" endtime="20180517 15:41:25.785" critical="yes" starttime="20180517 15:41:25.775">No keyword with name 'Ramdom Phone Number' found.</status>
+</test>
+<test id="s1-s1-s1-t5" name="05_freeze_fsd_login">
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>${freezeinfo}</arg>
+<arg>Fsd Api Login</arg>
+<arg>14497168352</arg>
+<arg>&amp;{testdata_001_FSD_account_001}</arg>
+</arguments>
+<status status="PASS" endtime="20180517 15:41:25.797" starttime="20180517 15:41:25.797"></status>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>Run Keyword if</arg>
+<arg>${freezeinfo}!=3</arg>
+<arg>Fail</arg>
+</arguments>
+<status status="PASS" endtime="20180517 15:41:25.798" starttime="20180517 15:41:25.798"></status>
+</kw>
+<status status="PASS" endtime="20180517 15:41:25.799" critical="yes" starttime="20180517 15:41:25.794"></status>
+</test>
+<status status="FAIL" endtime="20180517 15:41:25.806" starttime="20180517 15:41:25.540"></status>
+</suite>
+<status status="FAIL" endtime="20180517 15:41:25.816" starttime="20180517 15:41:25.535"></status>
+</suite>
+<status status="FAIL" endtime="20180517 15:41:25.830" starttime="20180517 15:41:25.509"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="4" pass="1">Critical Tests</stat>
+<stat fail="4" pass="1">All Tests</stat>
+</total>
+<tag>
+<stat fail="1" pass="0">add</stat>
+</tag>
+<suite>
+<stat fail="4" id="s1" name="NTGJAPI" pass="1">NTGJAPI</stat>
+<stat fail="4" id="s1-s1" name="FeiShouDuan" pass="1">NTGJAPI.FeiShouDuan</stat>
+<stat fail="4" id="s1-s1-s1" name="01 FeiShouDuan Login" pass="1">NTGJAPI.FeiShouDuan.01 FeiShouDuan Login</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20180517 15:41:25.701" level="ERROR">Error in file 'E:\myworkstation\myspace\auto_test\NTGJAPI\SystemKeywords\AllSystemKeywords.txt': Importing test library 'NTGJLibrary' failed: ImportError: No module named NTGJLibrary
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Windows\SYSTEM32\python27.zip
+  c:\python27\DLLs
+  c:\python27\lib
+  c:\python27\lib\plat-win
+  c:\python27\lib\lib-tk
+  c:\python27
+  c:\python27\lib\site-packages
+  E:\myworkstation\myspace\auto_test\NTGJAPI\NTGJLibrary
+  c:\python27\lib\site-packages\wx-2.8-msw-unicode</msg>
+</errors>
+</robot>

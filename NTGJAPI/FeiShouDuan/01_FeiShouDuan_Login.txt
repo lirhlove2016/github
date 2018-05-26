@@ -1,0 +1,44 @@
+*** Settings ***
+Variables         FeiShouDuan_account_testdata.py
+Variables         System_Management_testdata.py
+Resource          ../UserKeywords/AllUserKeywords.txt
+
+*** Test Cases ***
+01_errorpassword
+    [Tags]    add
+    [Timeout]
+    log    步骤1:FSD login error password
+    ${userinfo}    Fsd Api Login    14110428596    &{testdata_001_FSD_account_002}
+    Run Keyword if    ${userinfo}!=2    Fail
+
+02_login
+    log    步骤1:FSD login
+    @{userinfo}    Fsd Api Login    19900001001    &{testdata_001_FSD_account_003}
+    Run Keyword if    @{userinfo}[0]!=1    Fail
+    log    步骤10:Create FlyUser Team
+    ${flags}    Add Tools    @{userinfo}[2]    @{userinfo}[1]
+    Run Keyword if    ${flags}!=1    Fail
+
+03_mobilenumber_non-exist
+    log    步骤1: mobile number non-exist
+    ${userinfo}    Fsd Check Account    &{testdata_001_FSD_check_account_002}
+    Run Keyword if    ${userinfo}!=1    Fail
+
+04_Freeze_Account_Login
+    log    步骤1:Ramdom Phone Number
+    ${phonenumber}    Ramdom Phone Number
+    log    步骤2:FSD user register
+    @{userinfo}    Fsd Register    ${phonenumber}
+    Run Keyword if    @{userinfo}[0]!=1    Fail
+    log    步骤3:FSD user set password
+    ${flags}    Flyuser Set Password    @{userinfo}[1]    @{userinfo}[2]    ${phonenumber}
+    Run Keyword if    @{userinfo}[0]!=1    Fail
+    log    步骤4：system management login
+    ${userinfoflags}    Management Login    &{testdata_001_system_account_001}
+    Run Keyword if    ${userinfoflags}!=1    Fail
+    log    步骤5：Freeze fly account
+    ${freezestatus}    Freeze Fly Account    @{userinfo}[2]
+    Run Keyword if    ${freezestatus}!=1    Fail
+    log    步骤6:Freeze account login
+    ${freezeinfo}    Fsd Api Login    ${phonenumber}    &{testdata_001_FSD_account_001}
+    Run Keyword if    ${freezeinfo}!=3    Fail

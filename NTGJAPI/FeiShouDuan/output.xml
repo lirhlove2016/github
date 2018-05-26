@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180516 15:51:05.510" generator="Robot 3.0.3 (Python 2.7.13 on win32)">
+<suite source="E:\myworkstation\myspace\auto_test\NTGJAPI\FeiShouDuan\01_FeiShouDuan_Login.txt" id="s1" name="01 FeiShouDuan Login">
+<test id="s1-t1" name="01_errorpassword">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>步骤1:FSD login error password</arg>
+</arguments>
+<msg timestamp="20180516 15:51:08.105" level="INFO">步骤1:FSD login error password</msg>
+<status status="PASS" endtime="20180516 15:51:08.105" starttime="20180516 15:51:08.098"></status>
+</kw>
+<kw name="Fsd Api Login" library="NTGJLibrary">
+<doc>FSD login  登陆。</doc>
+<arguments>
+<arg>14110428596</arg>
+<arg>&amp;{testdata_001_FSD_account_002}</arg>
+</arguments>
+<assign>
+<var>${userinfo}</var>
+</assign>
+<msg timestamp="20180516 15:51:08.418" level="INFO">enter post config
+phone=14110428596&amp;password=123qwe&amp;InviteCode=
+{'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': 'Mozilla/4.0'}
+ceshi.farmfriend.com.cn
+80
+/flyHandApp/api/user/loginPassword
+response {"errorCode":600090,"info":"您的密码不正确或是没有设置密码!!!"}
+Get the accesstoken 
+Get the id 
+Passed:FSD login error password</msg>
+<msg timestamp="20180516 15:51:08.419" level="INFO">${userinfo} = 2</msg>
+<status status="PASS" endtime="20180516 15:51:08.419" starttime="20180516 15:51:08.105"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${userinfo}!=2</arg>
+<arg>Fail</arg>
+</arguments>
+<status status="PASS" endtime="20180516 15:51:08.420" starttime="20180516 15:51:08.420"></status>
+</kw>
+<tags>
+<tag>add</tag>
+</tags>
+<status status="PASS" endtime="20180516 15:51:08.421" critical="yes" starttime="20180516 15:51:08.097"></status>
+</test>
+<test id="s1-t2" name="02_login">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>步骤1:FSD login</arg>
+</arguments>
+<msg timestamp="20180516 15:51:08.424" level="INFO">步骤1:FSD login</msg>
+<status status="PASS" endtime="20180516 15:51:08.424" starttime="20180516 15:51:08.423"></status>
+</kw>
+<kw name="Fsd Api Login" library="NTGJLibrary">
+<doc>FSD login  登陆。</doc>
+<arguments>
+<arg>19900001001</arg>
+<arg>&amp;{testdata_001_FSD_account_003}</arg>
+</arguments>
+<assign>
+<var>@{userinfo}</var>
+</assign>
+<msg timestamp="20180516 15:51:08.762" level="INFO">enter post config
+phone=19900001001&amp;password=123qwe&amp;InviteCode=
+{'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': 'Mozilla/4.0'}
+ceshi.farmfriend.com.cn
+80
+/flyHandApp/api/user/loginPassword
+response {"errorCode":0,"info":"操作成功","datas":{"loginSuccess":{"authState":3,"create_time":"2018-03-14 16:13:14.0","hasPw":"true","team_people_number":null,"isMember":"0","type":"1","provinceId":null,"userId":2190,"team_name":"flyuser","token":"4d54e113254e483ebeaf7e8cc1186237","position_county_id":null,"total":"1000.00","password":"tX6of8X04aE=","head_url":null,"pilotType":"2","balance":"631.95","phone":"19900001001","business_type":"1","liable_name":"autotest","liable_identity":"33070220071027641X","max_work":"2147483647.00","liable_identity_url":"http://farmlandbucketstest.oss-cn-beijing.aliyuncs.com/e306ad21701a46fc93f4d2f927e39bac","state":2,"userRole":0}}}
+Get the accesstoken 4d54e113254e483ebeaf7e8cc1186237
+Get the id 2190
+Passed:FSD login successed</msg>
+<msg timestamp="20180516 15:51:08.763" level="INFO">@{userinfo} = [ 1 | 4d54e113254e483ebeaf7e8cc1186237 | 2190 ]</msg>
+<status status="PASS" endtime="20180516 15:51:08.763" starttime="20180516 15:51:08.425"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>@{userinfo}[0]!=1</arg>
+<arg>Fail</arg>
+</arguments>
+<status status="PASS" endtime="20180516 15:51:08.765" starttime="20180516 15:51:08.764"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>步骤10:Create FlyUser Team</arg>
+</arguments>
+<msg timestamp="20180516 15:51:08.766" level="INFO">步骤10:Create FlyUser Team</msg>
+<status status="PASS" endtime="20180516 15:51:08.767" starttime="20180516 15:51:08.766"></status>
+</kw>
+<kw name="Add Tools" library="NTGJLibrary">
+<doc>add tools 。</doc>
+<arguments>
+<arg>@{userinfo}[2]</arg>
+<arg>@{userinfo}[1]</arg>
+</arguments>
+<assign>
+<var>${flags}</var>
+</assign>
+<msg timestamp="20180516 15:51:08.932" level="INFO">enter post config
+factory=&amp;flowMeterId=&amp;internalSerialNumber=&amp;memberId=2190&amp;model=&amp;note=&amp;planeSn=&amp;toolFile=http://farmlandbucketstest.oss-cn-beijing.aliyuncs.com/B9F72FD1753A47C3B3C13EE7F239C186&amp;toolModel=澶х枂 MG-1&amp;userName=娴嬭瘯&amp;workAssistId=18
+{'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': 'Mozilla/4.0'}
+ceshi.farmfriend.com.cn
+80
+/flyHandApp/api/user/addTool/v1?userId=2190&amp;token=4d54e113254e483ebeaf7e8cc1186237
+response {"errorCode":0,"info":"鎿嶄綔鎴愬姛"}
+Passed: add tools successed</msg>
+<msg timestamp="20180516 15:51:08.933" level="INFO">${flags} = 1</msg>
+<status status="PASS" endtime="20180516 15:51:08.933" starttime="20180516 15:51:08.767"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${flags}!=1</arg>
+<arg>Fail</arg>
+</arguments>
+<status status="PASS" endtime="20180516 15:51:08.935" starttime="20180516 15:51:08.933"></status>
+</kw>
+<status status="PASS" endtime="20180516 15:51:08.935" critical="yes" starttime="20180516 15:51:08.422"></status>
+</test>
+<test id="s1-t3" name="03_mobilenumber_non-exist">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>步骤1: mobile number non-exist</arg>
+</arguments>
+<msg timestamp="20180516 15:51:08.939" level="INFO">步骤1: mobile number non-exist</msg>
+<status status="PASS" endtime="20180516 15:51:08.939" starttime="20180516 15:51:08.938"></status>
+</kw>
+<kw name="Fsd Check Account" library="NTGJLibrary">
+<doc>FSD check account  检查账号是否存在。</doc>
+<arguments>
+<arg>&amp;{testdata_001_FSD_check_account_002}</arg>
+</arguments>
+<assign>
+<var>${userinfo}</var>
+</assign>
+<msg timestamp="20180516 15:51:09.043" level="INFO">enter post config
+account=19900001012&amp;acc_type=0&amp;appid=1
+{'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': 'Mozilla/4.0'}
+ceshi.farmfriend.com.cn
+80
+/flyHandApp/api/user/checkAccountRegisted
+response {"errorCode":1,"info":"user not exist"}
+Passed:FSD account not exist</msg>
+<msg timestamp="20180516 15:51:09.043" level="INFO">${userinfo} = 1</msg>
+<status status="PASS" endtime="20180516 15:51:09.043" starttime="20180516 15:51:08.940"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${userinfo}!=1</arg>
+<arg>Fail</arg>
+</arguments>
+<status status="PASS" endtime="20180516 15:51:09.044" starttime="20180516 15:51:09.044"></status>
+</kw>
+<status status="PASS" endtime="20180516 15:51:09.045" critical="yes" starttime="20180516 15:51:08.936"></status>
+</test>
+<test id="s1-t4" name="04_Freeze_Account_Login">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>步骤1:Ramdom Phone Number</arg>
+</arguments>
+<msg timestamp="20180516 15:51:09.047" level="INFO">步骤1:Ramdom Phone Number</msg>
+<status status="PASS" endtime="20180516 15:51:09.047" starttime="20180516 15:51:09.047"></status>
+</kw>
+<kw name="Ramdom Phone Number" library="NTGJLibrary">
+<doc>Ramdom phone number。</doc>
+<assign>
+<var>${phonenumber}</var>
+</assign>
+<msg timestamp="20180516 15:51:09.066" level="INFO">${phonenumber} = 14012568304</msg>
+<status status="PASS" endtime="20180516 15:51:09.066" starttime="20180516 15:51:09.048"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>步骤2:FSD user register</arg>
+</arguments>
+<msg timestamp="20180516 15:51:09.067" level="INFO">步骤2:FSD user register</msg>
+<status status="PASS" endtime="20180516 15:51:09.067" starttime="20180516 15:51:09.066"></status>
+</kw>
+<kw name="Fsd Register" library="NTGJLibrary">
+<doc>FSD register。</doc>
+<arguments>
+<arg>${phonenumber}</arg>
+</arguments>
+<assign>
+<var>@{userinfo}</var>
+</assign>
+<msg timestamp="20180516 15:51:10.121" level="INFO">enter post config
+phone=14012568304
+{'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': 'Mozilla/4.0'}
+ceshi.farmfriend.com.cn
+80
+/flyHandApp/api/user/loginTest
+response {"errorCode":0,"info":"鎿嶄綔鎴愬姛","datas":{"loginSuccess":{"authState":1,"balance":0.0,"phone":"14012568304","hasPw":"false","type":1,"userRole":4,"userId":3004,"token":"f73ec33460544cd1b8b2c3b60a1a5845"}}}
+Get the accesstoken f73ec33460544cd1b8b2c3b60a1a5845
+Get the id 3004
+Passed:FSD user register successed</msg>
+<msg timestamp="20180516 15:51:10.122" level="INFO">@{userinfo} = [ 1 | f73ec33460544cd1b8b2c3b60a1a5845 | 3004 ]</msg>
+<status status="PASS" endtime="20180516 15:51:10.122" starttime="20180516 15:51:09.068"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>@{userinfo}[0]!=1</arg>
+<arg>Fail</arg>
+</arguments>
+<status status="PASS" endtime="20180516 15:51:10.123" starttime="20180516 15:51:10.122"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>步骤3:FSD user set password</arg>
+</arguments>
+<msg timestamp="20180516 15:51:10.124" level="INFO">步骤3:FSD user set password</msg>
+<status status="PASS" endtime="20180516 15:51:10.124" starttime="20180516 15:51:10.123"></status>
+</kw>
+<kw name="Flyuser Set Password" library="NTGJLibrary">
+<doc>flyuser set password 。</doc>
+<arguments>
+<arg>@{userinfo}[1]</arg>
+<arg>@{userinfo}[2]</arg>
+<arg>${phonenumber}</arg>
+</arguments>
+<assign>
+<var>${flags}</var>
+</assign>
+<msg timestamp="20180516 15:51:10.221" level="INFO">enter post config
+userId=3004&amp;password=123qwe&amp;token=f73ec33460544cd1b8b2c3b60a1a5845&amp;phone=14012568304
+{'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': 'Mozilla/4.0'}
+ceshi.farmfriend.com.cn
+80
+/flyHandApp/api/user/loginAdd
+response {"errorCode":0,"info":"鎿嶄綔鎴愬姛"}
+Passed: flyuser set password successed</msg>
+<msg timestamp="20180516 15:51:10.222" level="INFO">${flags} = 1</msg>
+<status status="PASS" endtime="20180516 15:51:10.222" starttime="20180516 15:51:10.125"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>@{userinfo}[0]!=1</arg>
+<arg>Fail</arg>
+</arguments>
+<status status="PASS" endtime="20180516 15:51:10.225" starttime="20180516 15:51:10.223"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>步骤4：system management login</arg>
+</arguments>
+<msg timestamp="20180516 15:51:10.227" level="INFO">步骤4：system management login</msg>
+<status status="PASS" endtime="20180516 15:51:10.227" starttime="20180516 15:51:10.226"></status>
+</kw>
+<kw name="Management Login" library="NTGJLibrary">
+<doc>management login  登陆。</doc>
+<arguments>
+<arg>&amp;{testdata_001_system_account_001}</arg>
+</arguments>
+<assign>
+<var>${userinfoflags}</var>
+</assign>
+<msg timestamp="20180516 15:51:10.274" level="INFO">enter post config
+userName=lirunhua&amp;passWord=123456
+ceshi.farmfriend.com.cn
+80
+/management/sys/login
+response {"errno":0,"data":{"FARMFRIEND_TOKEN":"eyJ1aWQiOiI3NSIsInRva2VuIjoiNWUxMzI2MjAtMTQ4NS00OGVkLTg4ZWYtN2JlNzJkYzZiYmUwIn0=","FARMFRIEND_LT":"1526457069818"}}
+Passed:sys login successed</msg>
+<msg timestamp="20180516 15:51:10.274" level="INFO">${userinfoflags} = 1</msg>
+<status status="PASS" endtime="20180516 15:51:10.274" starttime="20180516 15:51:10.228"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${userinfoflags}!=1</arg>
+<arg>Fail</arg>
+</arguments>
+<status status="PASS" endtime="20180516 15:51:10.276" starttime="20180516 15:51:10.275"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>步骤5：Freeze fly account</arg>
+</arguments>
+<msg timestamp="20180516 15:51:10.276" level="INFO">步骤5：Freeze fly account</msg>
+<status status="PASS" endtime="20180516 15:51:10.277" starttime="20180516 15:51:10.276"></status>
+</kw>
+<kw name="Freeze Fly Account" library="NTGJLibrary">
+<doc>freeze fly account 。</doc>
+<arguments>
+<arg>@{userinfo}[2]</arg>
+</arguments>
+<assign>
+<var>${freezestatus}</var>
+</assign>
+<msg timestamp="20180516 15:51:10.406" level="INFO">enter post config
+id=3004&amp;state=3
+{'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': 'Mozilla/4.0'}
+ceshi.farmfriend.com.cn
+80
+/management/user/updateFlyUserAccountState
+response {"resCode":0,"info":"SUCCESS"}
+Passed: freeze fly account successed</msg>
+<msg timestamp="20180516 15:51:10.406" level="INFO">${freezestatus} = 1</msg>
+<status status="PASS" endtime="20180516 15:51:10.406" starttime="20180516 15:51:10.277"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${freezestatus}!=1</arg>
+<arg>Fail</arg>
+</arguments>
+<status status="PASS" endtime="20180516 15:51:10.407" starttime="20180516 15:51:10.406"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>步骤6:Freeze account login</arg>
+</arguments>
+<msg timestamp="20180516 15:51:10.407" level="INFO">步骤6:Freeze account login</msg>
+<status status="PASS" endtime="20180516 15:51:10.407" starttime="20180516 15:51:10.407"></status>
+</kw>
+<kw name="Fsd Api Login" library="NTGJLibrary">
+<doc>FSD login  登陆。</doc>
+<arguments>
+<arg>${phonenumber}</arg>
+<arg>&amp;{testdata_001_FSD_account_001}</arg>
+</arguments>
+<assign>
+<var>${freezeinfo}</var>
+</assign>
+<msg timestamp="20180516 15:51:10.488" level="INFO">enter post config
+phone=14012568304&amp;password=123qwe&amp;InviteCode=
+{'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': 'Mozilla/4.0'}
+ceshi.farmfriend.com.cn
+80
+/flyHandApp/api/user/loginPassword
+response {"errorCode":600030,"info":"\xe4\xbd\xa0\xe7\x9a\x84\xe8\xb4\xa6\xe6\x88\xb7\xe5\xb7\xb2\xe5\x86\xbb\xe7\xbb\x93"}
+Get the accesstoken 
+Get the id 
+Passed:Freeze fly account can not login</msg>
+<msg timestamp="20180516 15:51:10.489" level="INFO">${freezeinfo} = 3</msg>
+<status status="PASS" endtime="20180516 15:51:10.489" starttime="20180516 15:51:10.408"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${freezeinfo}!=3</arg>
+<arg>Fail</arg>
+</arguments>
+<status status="PASS" endtime="20180516 15:51:10.490" starttime="20180516 15:51:10.489"></status>
+</kw>
+<status status="PASS" endtime="20180516 15:51:10.490" critical="yes" starttime="20180516 15:51:09.045"></status>
+</test>
+<test id="s1-t5" name="05_freeze_fsd_login">
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>${freezeinfo}</arg>
+<arg>Fsd Api Login</arg>
+<arg>14497168352</arg>
+<arg>&amp;{testdata_001_FSD_account_001}</arg>
+</arguments>
+<status status="PASS" endtime="20180516 15:51:10.491" starttime="20180516 15:51:10.491"></status>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>Run Keyword if</arg>
+<arg>${freezeinfo}!=3</arg>
+<arg>Fail</arg>
+</arguments>
+<status status="PASS" endtime="20180516 15:51:10.492" starttime="20180516 15:51:10.492"></status>
+</kw>
+<status status="PASS" endtime="20180516 15:51:10.493" critical="yes" starttime="20180516 15:51:10.490"></status>
+</test>
+<status status="PASS" endtime="20180516 15:51:10.494" starttime="20180516 15:51:05.519"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="5">Critical Tests</stat>
+<stat fail="0" pass="5">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="1">add</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="01 FeiShouDuan Login" pass="5">01 FeiShouDuan Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
