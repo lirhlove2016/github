@@ -1,5 +1,0 @@
-# github
-    Host github.com
-    HostName github.com
-    PreferredAuthentications publickey
-    IdentityFile ~/.ssh/id_lrh_github
